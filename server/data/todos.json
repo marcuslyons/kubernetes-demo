@@ -1,0 +1,27 @@
+{
+    "data":
+    {
+        "todos": [
+            {
+                "id": 1,
+                "name": "get shit done",
+                "completed": 0
+            },
+            {
+                "id": 2,
+                "name": "get more shit done",
+                "completed": 0
+            },
+            {
+                "id": 3,
+                "name": "get even more shit done",
+                "completed": 0
+            },
+            {
+                "id": 4,
+                "name": "get all the shit done",
+                "completed": 0
+            }
+        ]
+    }
+}
