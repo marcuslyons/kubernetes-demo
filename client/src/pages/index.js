@@ -1,21 +1,38 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from "react"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/layout/seo"
+import TodoList from "../components/todo-list/list"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import { Button, TextInput } from "@primer/components"
+
+const IndexPage = () => {
+  const [todos, setTodos] = useState([])
+  const [todo, setTodo] = useState("")
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    setTodos([...todos, todo])
+    setTodo("")
+  }
+
+  return (
+    <Layout>
+      <SEO title="Todo List" />
+      <form onSubmit={e => handleSubmit(e)}>
+        <TextInput
+          value={todo}
+          onChange={e => setTodo(e.target.value)}
+          placeholder="Enter a todo"
+          type="text"
+          required
+        />
+        <Button type="submit">Button</Button>
+      </form>
+      <TodoList testing={todos} />
+    </Layout>
+  )
+}
 
 export default IndexPage
